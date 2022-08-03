@@ -1,0 +1,27 @@
+from selenium.webdriver.common.by import By
+from selenium.webdriver import Edge
+from selenium.webdriver.common.action_chains import ActionChains
+import time
+web=Edge()
+web.get('http://jyxt.jzxy.edu.cn/Student/student_index.aspx')
+web.find_element(By.XPATH,'/html/body/form/div[3]/table/tbody/tr[2]/td/table/tbody/tr/td[2]/table[2]/tbody/tr[2]/td/label/input').send_keys('')
+web.find_element(By.XPATH,'/html/body/form/div[3]/table/tbody/tr[2]/td/table/tbody/tr/td[2]/table[2]/tbody/tr[3]/td/label/input').send_keys('')
+web.find_element(By.XPATH,'/html/body/form/div[3]/table/tbody/tr[2]/td/table/tbody/tr/td[2]/table[2]/tbody/tr[4]/td/label/input').send_keys('')
+el=web.find_element(By.XPATH,'/html/body/form/div[3]/table/tbody/tr[2]/td/table/tbody/tr/td[2]/table[2]/tbody/tr[7]/td[1]/input')
+el.click()
+web.switch_to.alert.accept()
+el=web.find_element(By.XPATH,'/html/body/form/div[3]/table/tbody/tr/td/table[2]/tbody/tr/td[1]/div/ul/li[3]/a')
+el.click()
+iframe=web.find_element(By.XPATH,'/html/body/form/div[3]/table/tbody/tr/td/table[3]/tbody/tr/td/iframe')
+web.switch_to.frame(iframe)
+set_sort=web.find_element(By.CSS_SELECTOR,'[name="DropBYQX"]')
+set_sort.find_element(By.CSS_SELECTOR,"option[value='76']").click()
+set_sort=web.find_element(By.CSS_SELECTOR,'[name="drop_sf"]')
+set_sort.find_element(By.CSS_SELECTOR,"option[value='320000']").click()
+set_sort=web.find_element(By.CSS_SELECTOR,'[name="drop_syszd"]')
+time.sleep(0.5)
+set_sort.find_element(By.CSS_SELECTOR,"option[value='320115']").click()
+select=web.find_element(By.XPATH,'/html/body/form/div[3]/table/tbody/tr[3]/td[2]/input')
+ActionChains(web).move_to_element(select).click().send_keys('荒漠迷城A点突破手').perform()
+pic=web.find_element(By.XPATH,'/html/body/form/div[3]/table/tbody/tr[13]/td[2]/input')
+pic.send_keys(r'C:\Users\Admin\Desktop\悍匪.jpg')
